@@ -1,26 +1,27 @@
 const webpack = require("webpack");
 
 module.exports = {
-  entry: './index.js',
+  entry: './main.js',
   output: {
       path: __dirname,
-      filename: 'bundle.js'
+      filename: './static/bundle.js'
   },
   module: {
     loaders: [{
       loader: 'babel-loader',
-      test: /\.js$/,
+      test: /\.jsx$/,
       exclude: /node_modules/
     }]
-  },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      output: {
-        comments: false,
-      },
-    }),
-  ],
+  }
+  // ,
+  // plugins: [
+  //   new webpack.optimize.UglifyJsPlugin({
+  //     compress: {
+  //       warnings: false,
+  //     },
+  //     output: {
+  //       comments: false,
+  //     },
+  //   }),
+  // ],
 }
