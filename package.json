@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/babel-node --presets 'react,es2015' server.js"
+    "start": "./node_modules/.bin/babel-node server.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.2.2",
