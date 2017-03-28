@@ -3,24 +3,26 @@ import { Server } from 'http';
 import Express from 'express'
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import App from "./src/app.jsx"
+import Toggle from "./src/app.jsx"
 
 const app = new Express();
+const server = new Server(app);
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(Express.static(path.join(__dirname, 'static')));
 
-const server = new Server(app);
+
 
 app.get('/', (req, res) => {
-  let markup = renderToString(<App/>)
-  console.log(markup);
+  let markup = renderToString(<Toggle/>)
   res.render('index', {markup});
 });
 
-server.listen(3000, err => {
+const port = 3000;
+server.listen(port, err => {
   if (err) {
     return console.error(err);
   }
-  console.log("Server is running");
+  console.log("Server is running on port " + String(port));
 })
