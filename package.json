@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dinespoulsen/reactReduxWebshop#readme",
   "dependencies": {
+    "babel": "^6.23.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "immutable": "^3.8.1",
