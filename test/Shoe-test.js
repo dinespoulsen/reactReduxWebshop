@@ -11,7 +11,11 @@ describe("<Shoe />", () => {
 
   it("should take a name props", () => {
     const wrapper = mount(<Shoe name="shoeName"/>);
-    let element = wrapper.find("p");
-    expect(element.text()).to.equal("shoeName");
+    expect(wrapper.props().name).to.equal("shoeName");
+  });
+
+  it("should display the price when passed as a prop", () => {
+    const wrapper = mount(<Shoe price={10}/>);
+    expect(wrapper.find("div").childAt(1).text()).to.equal("Price: 10");
   });
 });
