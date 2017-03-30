@@ -3,7 +3,8 @@ import { Server } from 'http';
 import Express from 'express'
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import Toggle from "./src/app.jsx"
+import ShoeList from "./src/ShoeList.jsx"
+import {Map, List, fromJS} from "immutable";
 
 const app = new Express();
 const server = new Server(app);
@@ -13,9 +14,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(Express.static(path.join(__dirname, 'static')));
 
 
+let input = [
+  {id: 1, name: "shoeName", price: 10},
+  {id: 2, name: "secondShoe", price: 20}
+];
+var shoeList = fromJS(input);
 
 app.get('/', (req, res) => {
-  let markup = renderToString(<Toggle/>)
+  let markup = renderToString(<ShoeList shoes={shoeList}/>)
   res.render('index', {markup});
 });
 

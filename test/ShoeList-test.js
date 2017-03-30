@@ -19,4 +19,15 @@ describe("<ShoeList />", () => {
     const wrapper = shallow(<ShoeList shoes={shoeList} />);
     expect(wrapper.children()).to.have.length(shoeList.size);
   });
+
+  it("should be able to render two shoe components", () => {
+    let input = [
+      {id: 1, name: "shoeName", price: 10},
+      {id: 2, name: "secondShoe", price: 20}
+    ];
+    var shoeList = fromJS(input);
+
+    const wrapper = shallow(<ShoeList shoes={shoeList} />);
+    expect(wrapper.children()).to.have.length(shoeList.size);
+  });
 });

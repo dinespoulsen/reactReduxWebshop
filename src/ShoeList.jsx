@@ -9,15 +9,15 @@ class ShoeList extends React.Component {
     {
       shoes = this.props.shoes.map((shoe) => {
         return (
-          <Shoe key={shoe.get("id")} name={shoe.get("name")} price={shoe.get("price")} />
+          <li key={shoe.get("id")}><Shoe name={shoe.get("name")} price={shoe.get("price")} /></li>
         ) ;
       });
     }
 
     return (
-      <div>
+      <ul>
         {shoes}
-      </div>
+      </ul>
     );
   }
 
