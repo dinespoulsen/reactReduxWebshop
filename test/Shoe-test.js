@@ -19,14 +19,24 @@ describe("<Shoe />", () => {
     expect(wrapper.props().id).to.equal("1");
   });
 
+  it("should take a image url props", () => {
+    const wrapper = mount(<Shoe id="1"/>);
+    expect(wrapper.props().id).to.equal("1");
+  });
+
   it("should display the price when passed as a prop", () => {
     const wrapper = mount(<Shoe price={10}/>);
-    expect(wrapper.find("div").childAt(1).text()).to.equal("Price: 10");
+    expect(wrapper.find("div").childAt(2).text()).to.equal("Price: 10");
   });
 
   it("should render with a button", () => {
     const wrapper = mount(<Shoe id={1}/>);
     expect(wrapper.find("button").exists()).to.equal(true);
     expect(wrapper.find("button").props().id).to.equal(1);
+  });
+
+  it("should render with an image", () => {
+    const wrapper = mount(<Shoe imgSrc={"./shoe.png"}/>);
+    expect(wrapper.find("img").exists()).to.equal(true);
   });
 });

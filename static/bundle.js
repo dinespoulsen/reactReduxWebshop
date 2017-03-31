@@ -14589,6 +14589,7 @@ var Shoe = function (_React$Component) {
           null,
           this.props.name
         ),
+        _react2.default.createElement("img", { src: "./shoe.png" }),
         _react2.default.createElement(
           "p",
           null,
