@@ -7,6 +7,7 @@ class Shoe extends React.Component {
       <div>
         <p>{this.props.name}</p>
         <p>Price: {String(this.props.price)}</p>
+        <button id={this.props.id}>Add to cart</button>
       </div>
     );
   }

@@ -5,6 +5,7 @@ import React from 'react';
 import {renderToString} from 'react-dom/server';
 import ShoeList from "./src/ShoeList.jsx"
 import {Map, List, fromJS} from "immutable";
+import {shoes} from "./shoeData";
 
 const app = new Express();
 const server = new Server(app);
@@ -14,11 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(Express.static(path.join(__dirname, 'static')));
 
 
-let input = [
-  {id: 1, name: "shoeName", price: 10},
-  {id: 2, name: "secondShoe", price: 20}
-];
-var shoeList = fromJS(input);
+var shoeList = fromJS(shoes);
 
 app.get('/', (req, res) => {
   let markup = renderToString(<ShoeList shoes={shoeList}/>)

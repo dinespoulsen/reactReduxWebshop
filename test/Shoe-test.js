@@ -23,4 +23,10 @@ describe("<Shoe />", () => {
     const wrapper = mount(<Shoe price={10}/>);
     expect(wrapper.find("div").childAt(1).text()).to.equal("Price: 10");
   });
+
+  it("should render with a button", () => {
+    const wrapper = mount(<Shoe id={1}/>);
+    expect(wrapper.find("button").exists()).to.equal(true);
+    expect(wrapper.find("button").props().id).to.equal(1);
+  });
 });
