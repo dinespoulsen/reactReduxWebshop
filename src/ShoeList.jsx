@@ -9,7 +9,7 @@ class ShoeList extends React.Component {
     {
       shoes = this.props.shoes.map((shoe) => {
         return (
-          <li key={shoe.get("id")}><Shoe id={shoe.get("id")} name={shoe.get("name")} price={shoe.get("price")} /></li>
+          <li key={shoe.get("id")}><Shoe id={shoe.get("id")} name={shoe.get("name")} price={shoe.get("price")} imgSrc={shoe.get("imgSrc")}/></li>
         ) ;
       });
     }

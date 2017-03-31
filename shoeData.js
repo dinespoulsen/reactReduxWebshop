@@ -1,5 +1,5 @@
 
 export const shoes = [
-  {id: 1, name: "shoeName", price: 10},
-  {id: 2, name: "secondShoe", price: 20}
+  {id: 1, name: "shoeName", price: 10, imgSrc: "./shoe.png"},
+  {id: 2, name: "secondShoe", price: 20, imgSrc: "./shoe.png"}
 ]

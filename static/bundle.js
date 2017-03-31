@@ -9488,7 +9488,7 @@ var ShoeList = function (_React$Component) {
           return _react2.default.createElement(
             "li",
             { key: shoe.get("id") },
-            _react2.default.createElement(_Shoe2.default, { id: shoe.get("id"), name: shoe.get("name"), price: shoe.get("price") })
+            _react2.default.createElement(_Shoe2.default, { id: shoe.get("id"), name: shoe.get("name"), price: shoe.get("price"), imgSrc: shoe.get("imgSrc") })
           );
         });
       }
@@ -14510,8 +14510,8 @@ module.exports = __webpack_require__(113);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 const shoes = [
-  {id: 1, name: "shoeName", price: 10},
-  {id: 2, name: "secondShoe", price: 20}
+  {id: 1, name: "shoeName", price: 10, imgSrc: "./shoe.png"},
+  {id: 2, name: "secondShoe", price: 20, imgSrc: "./shoe.png"}
 ]
 /* harmony export (immutable) */ __webpack_exports__["shoes"] = shoes;
 
@@ -14589,7 +14589,7 @@ var Shoe = function (_React$Component) {
           null,
           this.props.name
         ),
-        _react2.default.createElement("img", { src: "./shoe.png" }),
+        _react2.default.createElement("img", { src: this.props.imgSrc, width: "200" }),
         _react2.default.createElement(
           "p",
           null,
