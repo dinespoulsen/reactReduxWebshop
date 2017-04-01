@@ -4,7 +4,7 @@ class Shoe extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="shoe">
         <p>{this.props.name}</p>
         <img src={this.props.imgSrc} width="200"/>
         <p>Price: {String(this.props.price)}</p>

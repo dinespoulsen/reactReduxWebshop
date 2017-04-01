@@ -14583,7 +14583,7 @@ var Shoe = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "shoe" },
         _react2.default.createElement(
           "p",
           null,
