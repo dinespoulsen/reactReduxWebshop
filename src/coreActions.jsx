@@ -1,4 +1,5 @@
 
-export const setState = (initialState) => {
-  return initialState;
+
+export const setState = (state, entries) => {
+  return state.set("entries", entries);
 };

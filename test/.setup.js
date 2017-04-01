@@ -1,4 +1,7 @@
 require('babel-register')();
+var chai = require("chai");
+var chaiImmutable = require('chai-immutable');
+chai.use(chaiImmutable);
 
 var jsdom = require('jsdom').jsdom;
 
