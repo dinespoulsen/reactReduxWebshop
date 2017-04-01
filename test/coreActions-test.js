@@ -1,4 +1,3 @@
-
 import { expect } from 'chai';
 import {setState} from "../src/coreActions.jsx";
 import {List, Map, fromJS} from "immutable";
