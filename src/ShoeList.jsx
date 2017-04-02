@@ -10,8 +10,9 @@ class ShoeList extends React.Component {
     if(this.props.shoes != null )
     {
       shoes = this.props.shoes.map((shoe) => {
+        let shoeProps = {id: shoe.get("id"), name: shoe.get("name"), price: shoe.get("price"), imgSrc: shoe.get("imgSrc")}
         return (
-          <li key={shoe.get("id")}><Shoe id={shoe.get("id")} name={shoe.get("name")} price={shoe.get("price")} imgSrc={shoe.get("imgSrc")}/></li>
+          <li key={shoe.get("id")}><Shoe {...shoeProps} addToCartAction={this.props.addToCartAction}/></li>
         ) ;
       });
     }

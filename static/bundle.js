@@ -11862,10 +11862,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["setStateAction"] = setStateAction;
+/* harmony export (immutable) */ __webpack_exports__["addToCartAction"] = addToCartAction;
 function setStateAction(entries) {
   return {
     type: 'SET_STATE',
     entries: entries
+  };
+}
+
+function addToCartAction(entry) {
+  return {
+    type: 'ADD_TO_CART',
+    shoeId: entry
   };
 }
 
@@ -15383,6 +15391,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ShoeListContainer = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(17);
@@ -15421,13 +15431,16 @@ var ShoeList = function (_React$Component) {
   _createClass(ShoeList, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var shoes = void 0;
       if (this.props.shoes != null) {
         shoes = this.props.shoes.map(function (shoe) {
+          var shoeProps = { id: shoe.get("id"), name: shoe.get("name"), price: shoe.get("price"), imgSrc: shoe.get("imgSrc") };
           return _react2.default.createElement(
             "li",
             { key: shoe.get("id") },
-            _react2.default.createElement(_Shoe2.default, { id: shoe.get("id"), name: shoe.get("name"), price: shoe.get("price"), imgSrc: shoe.get("imgSrc") })
+            _react2.default.createElement(_Shoe2.default, _extends({}, shoeProps, { addToCartAction: _this2.props.addToCartAction }))
           );
         });
       }
@@ -15589,6 +15602,8 @@ var Shoe = function (_React$Component) {
   _createClass(Shoe, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         "div",
         { className: "shoe" },
@@ -15606,7 +15621,9 @@ var Shoe = function (_React$Component) {
         ),
         _react2.default.createElement(
           "button",
-          { id: this.props.id },
+          { id: this.props.id, onClick: function onClick() {
+              return _this2.props.addToCartAction(_this2.props.id);
+            } },
           "Add to cart"
         )
       );
@@ -15630,12 +15647,18 @@ exports.default = Shoe;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.INITIAL_STATE = exports.setState = undefined;
+exports.INITIAL_STATE = exports.addToCart = exports.setState = undefined;
 
 var _immutable = __webpack_require__(32);
 
 var setState = exports.setState = function setState(state, entries) {
   return state.set("entries", entries);
+};
+
+var addToCart = exports.addToCart = function addToCart(state, entry) {
+  var cartList = state.get("cart") || (0, _immutable.List)([]);
+  var cartListNew = cartList.push(entry);
+  return state.set("cart", cartListNew);
 };
 
 var INITIAL_STATE = exports.INITIAL_STATE = (0, _immutable.Map)();
@@ -15661,6 +15684,11 @@ function reducer() {
   switch (action.type) {
     case "SET_STATE":
       return (0, _coreActions.setState)(state, action.entries);
+    case "ADD_TO_CART":
+      var shoeToAdd = state.get("entries").find(function (shoe) {
+        return shoe.get("id") == action.shoeId;
+      });
+      return (0, _coreActions.addToCart)(state, shoeToAdd);
   }
   return state;
 };

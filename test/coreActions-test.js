@@ -20,17 +20,17 @@ describe("setState", () => {
 describe("addToCart", () => {
   it(" should add a shoe to the cart", () => {
     let shoe = fromJS({id: 3, name: "AddedShoe", price: 30})
-    let initialState = Map({cart: List([])});
+    let initialState = Map({entries: List([shoe]), cart: List([])});
     let nextState = addToCart(initialState, shoe);
-    expect(nextState).to.equal(Map({cart: List([shoe])}));
+    expect(nextState).to.equal(Map({entries: List([shoe]), cart: List([shoe])}));
   });
 
   it(" should add two shoes to the cart", () => {
     let shoe = fromJS({id: 3, name: "AddedShoe", price: 30})
     let shoeTwo = fromJS({id: 4, name: "SecondAdd", price: 30})
-    let initialState = Map({cart: List([])});
+    let initialState = Map({entries: List([shoe, shoeTwo]), cart: List([])});
     let nextState = addToCart(initialState, shoe);
     let thirdState = addToCart(nextState, shoeTwo);
-    expect(thirdState).to.equal(Map({cart: List([shoe, shoeTwo])}));
+    expect(thirdState).to.equal(Map({entries: List([shoe, shoeTwo]), cart: List([shoe, shoeTwo])}));
   });
 });

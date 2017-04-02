@@ -8,6 +8,6 @@ export function setStateAction(entries) {
 export function addToCartAction(entry) {
   return {
     type: 'ADD_TO_CART',
-    entry: entry
+    shoeId: entry
   };
 }
