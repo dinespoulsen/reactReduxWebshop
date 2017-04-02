@@ -1,5 +1,7 @@
 import React from "react";
 import Shoe from "../src/Shoe.jsx"
+import {connect} from 'react-redux';
+import * as actionCreators from './action_creators';
 
 class ShoeList extends React.Component {
 
@@ -22,5 +24,14 @@ class ShoeList extends React.Component {
   }
 
 };
+
+function mapStateToProps(state) {
+  return {
+    shoes: state.get("entries")
+  };
+}
+
+
+export const ShoeListContainer = connect(mapStateToProps, actionCreators)(ShoeList);
 
 export default ShoeList;
