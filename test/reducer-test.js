@@ -12,7 +12,7 @@ describe("reducer", () => {
     let initialState = Map();
     let setStateAction = {type: "SET_STATE", entries: shoeList}
     let nextState = reducer(initialState, setStateAction);
-    expect(nextState).to.equal(Map({entries: shoeList}));
+    expect(nextState).to.equal(Map({entries: shoeList, cart: List([])}));
   });
 
   it("should be able to add a shoe item to the cart", () => {

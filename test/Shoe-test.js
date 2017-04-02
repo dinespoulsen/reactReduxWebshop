@@ -39,4 +39,13 @@ describe("<Shoe />", () => {
     const wrapper = mount(<Shoe imgSrc={"./shoe.png"}/>);
     expect(wrapper.find("img").exists()).to.equal(true);
   });
+
+  it("invokes a callback when the button is clicked", () => {
+    let id;
+    const addToCartAction = (entry) => id = entry;
+    const wrapper = mount(<Shoe id="4" addToCartAction={addToCartAction}/>);
+    let button = wrapper.find("button");
+    button.simulate("click");
+    expect(id).to.equal("4");
+  });
 });

@@ -13,7 +13,7 @@ describe("setState", () => {
     let shoeList = fromJS(input);
     let initialState = Map();
     let nextState = setState(initialState, shoeList);
-    expect(nextState).to.equal(Map({entries: shoeList}));
+    expect(nextState).to.equal(Map({entries: shoeList, cart: List([])}));
   });
 });
 

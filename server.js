@@ -3,7 +3,7 @@ import { Server } from 'http';
 import Express from 'express'
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import {ShoeListContainer} from "./src/ShoeList.jsx"
+import Layout from './src/Layout.jsx';
 import {Map, List, fromJS} from "immutable";
 import {shoeList} from "./shoeData";
 import makeStore from './src/store.jsx';
@@ -22,7 +22,7 @@ store.dispatch(setStateAction(shoeList));
 
 
 app.get('/', (req, res) => {
-  let markup = renderToString(<Provider store={store}><ShoeListContainer /></Provider>)
+  let markup = renderToString(<Provider store={store}><Layout /></Provider>)
   res.render('index', {markup});
 });
 

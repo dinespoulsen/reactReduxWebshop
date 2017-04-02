@@ -1,7 +1,8 @@
 import { Map, List } from 'immutable';
 
 export const setState = (state, entries) => {
-  return state.set("entries", entries);
+  let nextState = state.set("cart", List([]));
+  return nextState.set("entries", entries);
 };
 
 export const addToCart = (state, entry) => {

@@ -14,6 +14,6 @@ describe("Redux store", () => {
     let shoeList = fromJS(input);
     let setStateAction = {type: "SET_STATE", entries: shoeList}
     store.dispatch(setStateAction);
-    expect(store.getState()).to.equal(Map({entries: shoeList}));
+    expect(store.getState()).to.equal(Map({entries: shoeList, cart: List([])}));
   });
 });

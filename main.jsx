@@ -1,4 +1,4 @@
-import {ShoeListContainer} from './src/ShoeList.jsx';
+import Layout from './src/Layout.jsx';
 import React from 'react';
 import { render } from 'react-dom';
 import {Map, List, fromJS} from "immutable";
@@ -12,7 +12,7 @@ store.dispatch(setStateAction(shoeList));
 
 render(
   <Provider store={store}>
-    <ShoeListContainer />
+    <Layout />
   </Provider>,
   document.getElementById('root')
 )
