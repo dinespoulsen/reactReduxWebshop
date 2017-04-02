@@ -4,3 +4,10 @@ export function setStateAction(entries) {
     entries: entries
   };
 }
+
+export function addToCartAction(entry) {
+  return {
+    type: 'ADD_TO_CART',
+    entry: entry
+  };
+}
