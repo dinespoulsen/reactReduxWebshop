@@ -4,10 +4,14 @@ import * as actionCreators from './action_creators';
 
 class CartStatus extends React.Component {
 
+  getCartStatus() {
+    return this.props.cart.size == 0 ? "" : this.props.cart.size;
+  }
+
   render() {
     return (
       <div>
-        <p>{this.props.cart.size}</p>
+        <p>Cart: {this.getCartStatus()}</p>
       </div>
     );
   }
