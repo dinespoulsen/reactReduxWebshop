@@ -4,10 +4,9 @@ import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import {List, fromJS} from "immutable";
 
-describe("<CardStatus />", () => {
+describe("<CartStatus />", () => {
   it("should render with 0 in the status", () => {
     const wrapper = shallow(<CartStatus cart={List([])}/>);
-    console.log(wrapper.debug());
     expect(wrapper.find("p").text()).to.equal("Cart: ");
   });
 
@@ -15,5 +14,10 @@ describe("<CardStatus />", () => {
     let shoe = fromJS({id: 1})
     const wrapper = shallow(<CartStatus cart={List([shoe])}/>);
     expect(wrapper.find("p").text()).to.equal("Cart: 1");
+  });
+
+  it("should render with a cart icon", () => {
+    const wrapper = shallow(<CartStatus cart={List([])}/>);
+    expect(wrapper.find("img").exists()).to.equal(true);
   });
 });
