@@ -11,6 +11,7 @@ class CartStatus extends React.Component {
   render() {
     return (
       <div>
+        <img src="./cart.png" width="30"></img>
         <p>Cart: {this.getCartStatus()}</p>
       </div>
     );

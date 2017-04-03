@@ -15581,7 +15581,7 @@ var CartStatus = function (_React$Component) {
   _createClass(CartStatus, [{
     key: 'getCartStatus',
     value: function getCartStatus() {
-      return this.props.cart.size;
+      return this.props.cart.size == 0 ? "" : this.props.cart.size;
     }
   }, {
     key: 'render',
@@ -15589,10 +15589,12 @@ var CartStatus = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement('img', { src: './cart.png', width: '30' }),
         _react2.default.createElement(
           'p',
           null,
-          getCartStatus()
+          'Cart: ',
+          this.getCartStatus()
         )
       );
     }
