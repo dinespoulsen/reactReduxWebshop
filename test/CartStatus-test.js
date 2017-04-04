@@ -7,13 +7,13 @@ import {List, fromJS} from "immutable";
 describe("<CartStatus />", () => {
   it("should render with 0 in the status", () => {
     const wrapper = shallow(<CartStatus cart={List([])}/>);
-    expect(wrapper.find("p").text()).to.equal("Cart: ");
+    expect(wrapper.find("span").text()).to.equal("");
   });
 
   it("should render with 1 in the status when cart holds one shoe", () => {
     let shoe = fromJS({id: 1})
     const wrapper = shallow(<CartStatus cart={List([shoe])}/>);
-    expect(wrapper.find("p").text()).to.equal("Cart: 1");
+    expect(wrapper.find("span").text()).to.equal("1");
   });
 
   it("should render with a cart icon", () => {

@@ -12,7 +12,7 @@ class CartStatus extends React.Component {
     return (
       <div>
         <img src="./cart.png" width="30"></img>
-        <p>Cart: {this.getCartStatus()}</p>
+        <span>{this.getCartStatus()}</span>
       </div>
     );
   }

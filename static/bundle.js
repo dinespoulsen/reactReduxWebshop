@@ -15600,9 +15600,8 @@ var CartStatus = function (_React$Component) {
         null,
         _react2.default.createElement('img', { src: './cart.png', width: '30' }),
         _react2.default.createElement(
-          'p',
-          null,
-          'Cart: ',
+          'span',
+          { id: 'cart-counter' },
           this.getCartStatus()
         )
       );
