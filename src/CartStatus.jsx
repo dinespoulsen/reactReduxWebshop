@@ -8,11 +8,15 @@ class CartStatus extends React.Component {
     return this.props.cart.size == 0 ? "" : this.props.cart.size;
   }
 
+  getStyle() {
+    return this.props.cart.size == 0 ? {display: "none"} : {display: "inline-block"}
+  }
+
   render() {
     return (
       <div>
         <img src="./cart.png" width="30"></img>
-        <span>{this.getCartStatus()}</span>
+        <span id="cartCounter" style={this.getStyle()}>{this.getCartStatus()}</span>
       </div>
     );
   }

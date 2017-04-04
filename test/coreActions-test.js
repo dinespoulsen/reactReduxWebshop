@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import {setState, addToCart} from "../src/coreActions.jsx";
+import {setState, addToCart, removeFromCart} from "../src/coreActions.jsx";
 import {List, Map, fromJS} from "immutable";
 
 
@@ -32,5 +32,13 @@ describe("addToCart", () => {
     let nextState = addToCart(initialState, shoe);
     let thirdState = addToCart(nextState, shoeTwo);
     expect(thirdState).to.equal(Map({entries: List([shoe, shoeTwo]), cart: List([shoe, shoeTwo])}));
+  });
+
+  it(" should remove a shoe from the cart", () => {
+    let shoe = fromJS({id: 3, name: "AddedShoe", price: 30})
+    let initialState = Map({entries: List([shoe]), cart: List([])});
+    let nextState = addToCart(initialState, shoe);
+    let thirdState = removeFromCart(nextState, shoe);
+    expect(thirdState).to.equal(Map({entries: List([shoe]), cart: List([])}));
   });
 });

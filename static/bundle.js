@@ -15593,6 +15593,11 @@ var CartStatus = function (_React$Component) {
       return this.props.cart.size == 0 ? "" : this.props.cart.size;
     }
   }, {
+    key: 'getStyle',
+    value: function getStyle() {
+      return this.props.cart.size == 0 ? { display: "none" } : { display: "inline-block" };
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -15601,7 +15606,7 @@ var CartStatus = function (_React$Component) {
         _react2.default.createElement('img', { src: './cart.png', width: '30' }),
         _react2.default.createElement(
           'span',
-          { id: 'cart-counter' },
+          { id: 'cartCounter', style: this.getStyle() },
           this.getCartStatus()
         )
       );
@@ -15847,7 +15852,6 @@ function reducer() {
       var shoeToRemove = state.get("entries").find(function (shoe) {
         return shoe.get("id") == action.shoeId;
       });
-      console.log(shoeToRemove);
       return (0, _coreActions.removeFromCart)(state, shoeToRemove);
   }
   return state;
