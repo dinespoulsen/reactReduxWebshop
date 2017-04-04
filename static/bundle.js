@@ -9588,6 +9588,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["setStateAction"] = setStateAction;
 /* harmony export (immutable) */ __webpack_exports__["addToCartAction"] = addToCartAction;
+/* harmony export (immutable) */ __webpack_exports__["removeFromCartAction"] = removeFromCartAction;
+// What's the purpose of this file and these functions? Where do we use them? 
 function setStateAction(entries) {
   return {
     type: 'SET_STATE',
@@ -9598,6 +9600,13 @@ function setStateAction(entries) {
 function addToCartAction(entry) {
   return {
     type: 'ADD_TO_CART',
+    shoeId: entry
+  };
+}
+
+function removeFromCartAction(entry) {
+  return {
+    type: "REMOVE_FROM_CART",
     shoeId: entry
   };
 }
@@ -15786,7 +15795,7 @@ exports.default = ShoeList;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.INITIAL_STATE = exports.addToCart = exports.setState = undefined;
+exports.INITIAL_STATE = exports.removeFromCart = exports.addToCart = exports.setState = undefined;
 
 var _immutable = __webpack_require__(32);
 
@@ -15798,6 +15807,12 @@ var setState = exports.setState = function setState(state, entries) {
 var addToCart = exports.addToCart = function addToCart(state, entry) {
   var cartList = state.get("cart") || (0, _immutable.List)([]);
   var cartListNew = cartList.push(entry);
+  return state.set("cart", cartListNew);
+};
+
+var removeFromCart = exports.removeFromCart = function removeFromCart(state, entry) {
+  var cartList = state.get("cart") || (0, _immutable.List)([]);
+  var cartListNew = cartList.delete(0);
   return state.set("cart", cartListNew);
 };
 
@@ -15829,6 +15844,12 @@ function reducer() {
         return shoe.get("id") == action.shoeId;
       });
       return (0, _coreActions.addToCart)(state, shoeToAdd);
+    case "REMOVE_FROM_CART":
+      var shoeToRemove = state.get("entries").find(function (shoe) {
+        return shoe.get("id") == action.shoeId;
+      });
+      console.log(shoeToRemove);
+      return (0, _coreActions.removeFromCart)(state, shoeToRemove);
   }
   return state;
 };

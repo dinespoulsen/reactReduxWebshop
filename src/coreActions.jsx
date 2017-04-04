@@ -11,4 +11,10 @@ export const addToCart = (state, entry) => {
   return state.set("cart", cartListNew);
 };
 
+export const removeFromCart = (state, entry) => {
+  let cartList = state.get("cart") || List([]);
+  let cartListNew = cartList.delete(0);
+  return state.set("cart", cartListNew);
+}
+
 export const INITIAL_STATE = Map();
