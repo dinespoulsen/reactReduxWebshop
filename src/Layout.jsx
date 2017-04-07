@@ -1,6 +1,4 @@
 import React from "react";
-import {CartStatusContainer} from "./CartStatus.jsx";
-import {ShoeListContainer} from "./ShoeList.jsx";
 import Header from "./Header.jsx";
 
 class Layout extends React.Component {
@@ -9,6 +7,7 @@ class Layout extends React.Component {
     return (
       <div>
         <Header></Header>
+        {this.props.children}
       </div>
     );
   }
