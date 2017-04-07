@@ -1,9 +1,14 @@
 import React from "react";
+import {Link} from "react-router";
 
 class Logo extends React.Component {
 
 render() {
-  return <h1 id="logo">ReactiveShoes</h1>;
+  return (
+    <div>
+      <Link to="/"><h1 id="logo">ReactiveShoes</h1></Link>
+    </div>
+  )
 }
 };
 
