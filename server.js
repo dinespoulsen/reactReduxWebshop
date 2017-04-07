@@ -3,12 +3,12 @@ import { Server } from 'http';
 import Express from 'express'
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import Layout from './src/Layout.jsx';
-import {Map, List, fromJS} from "immutable";
 import {shoeList} from "./shoeData";
 import makeStore from './src/store.jsx';
 import {Provider} from 'react-redux';
 import {setStateAction} from './src/action_creators'
+import {Router, Route, browserHistory, match, RouterContext } from 'react-router';
+import {routes} from "./main.jsx";
 
 const app = new Express();
 const server = new Server(app);
@@ -16,14 +16,18 @@ const server = new Server(app);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(Express.static(path.join(__dirname, 'static')));
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
 const store = makeStore();
 store.dispatch(setStateAction(shoeList));
 
 
 app.get('/', (req, res) => {
-  let markup = renderToString(<Provider store={store}><Layout /></Provider>)
-  res.render('index', {markup});
+  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+      let markup = renderToString(<Provider store={store}><RouterContext {...renderProps} /></Provider>);
+      res.render("index", {markup});
+  })
 });
 
 const port = process.env.PORT || 3000;

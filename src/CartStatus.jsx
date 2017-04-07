@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from 'react-redux';
 import * as actionCreators from './action_creators';
+import {Link} from "react-router"
 
 class CartStatus extends React.Component {
 
@@ -15,7 +16,9 @@ class CartStatus extends React.Component {
   render() {
     return (
       <div>
-        <img src="./cart.png" width="30"></img>
+        <Link to='/cart'>
+          <img src="./cart.png" width="30"></img>
+        </Link>
         <span id="cartCounter" style={this.getStyle()}>{this.getCartStatus()}</span>
       </div>
     );
