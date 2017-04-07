@@ -4,6 +4,8 @@ ul {
 }
 
 header {
+  border-bottom: solid 1px #F5F5F5;
+  padding: 10px;
   overflow: auto;
 }
 
@@ -11,12 +13,14 @@ header {
   float: left;
   text-align: center;
   display: inline-block;
-  border: solid 1px black;
+  border: solid 1px #40E0D0;
   padding: 15px;
   margin: 5px;
 }
 
 #logo {
+  font-family: helvetica;
+  color: 	#4682B4;
   float: left;
   margin: 0px 40px 0px 10px;
 }
