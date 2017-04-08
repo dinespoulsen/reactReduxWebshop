@@ -18850,7 +18850,8 @@ const shoes = [
   {id: 1, name: "shoeName", price: 10, imgSrc: "./shoe.png"},
   {id: 2, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
   {id: 3, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
-  {id: 4, name: "secondShoe", price: 20, imgSrc: "./shoe.png"}
+  {id: 4, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
+  {id: 5, name: "secondShoe", price: 20, imgSrc: "./shoe.png"}
 ]
 
 const shoeList = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_immutable__["fromJS"])(shoes);

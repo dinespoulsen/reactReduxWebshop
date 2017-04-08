@@ -5,7 +5,7 @@ const shoes = [
   {id: 2, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
   {id: 3, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
   {id: 4, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
-  {id: 4, name: "secondShoe", price: 20, imgSrc: "./shoe.png"}
+  {id: 5, name: "secondShoe", price: 20, imgSrc: "./shoe.png"}
 ]
 
 export const shoeList = fromJS(shoes);
