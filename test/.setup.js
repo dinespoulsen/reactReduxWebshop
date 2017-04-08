@@ -1,4 +1,4 @@
-require('babel-register')();
+require('babel-core/register')();
 var chai = require("chai");
 var chaiImmutable = require('chai-immutable');
 chai.use(chaiImmutable);
@@ -9,7 +9,7 @@ var exposedProperties = ['window', 'navigator', 'document'];
 
 global.document = jsdom('');
 global.window = document.defaultView;
-Object.keys(document.defaultView).forEach((property) => {
+Object.keys(document.defaultView).forEach(function(property) {
   if (typeof global[property] === 'undefined') {
     exposedProperties.push(property);
     global[property] = document.defaultView[property];
