@@ -13,8 +13,14 @@ export const addToCart = (state, entry) => {
 
 export const removeFromCart = (state, entry) => {
   let cartList = state.get("cart") || List([]);
-  let cartListNew = cartList.delete(0);
-  return state.set("cart", cartListNew);
+  let index = cartList.findIndex(shoe => shoe.get("id") == entry.get("id"));
+  return state.set("cart", cartList.delete(index));
 }
+
+export const settleCart = (state) => {
+  let newSettlement = state.get("cart") || List([]);
+  let settlements = state.get("settlements") || List([]);
+  return state.set("cart", List([])).set("settlements", settlements.push(newSettlement));
+};
 
 export const INITIAL_STATE = Map();

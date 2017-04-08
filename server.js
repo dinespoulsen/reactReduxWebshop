@@ -21,7 +21,7 @@ const store = makeStore();
 store.dispatch(setStateAction(shoeList));
 
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
       let markup = renderToString(<Provider store={store}><RouterContext {...renderProps} /></Provider>);
       res.render("index", {markup});

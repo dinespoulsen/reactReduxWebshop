@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import {setState, addToCart, removeFromCart} from "../src/coreActions.jsx";
+import {setState, addToCart, removeFromCart, settleCart} from "../src/coreActions.jsx";
 import {List, Map, fromJS} from "immutable";
 
 
@@ -33,12 +33,33 @@ describe("addToCart", () => {
     let thirdState = addToCart(nextState, shoeTwo);
     expect(thirdState).to.equal(Map({entries: List([shoe, shoeTwo]), cart: List([shoe, shoeTwo])}));
   });
+});
 
+describe("removeFromCart", () => {
   it(" should remove a shoe from the cart", () => {
     let shoe = fromJS({id: 3, name: "AddedShoe", price: 30})
     let initialState = Map({entries: List([shoe]), cart: List([])});
     let nextState = addToCart(initialState, shoe);
     let thirdState = removeFromCart(nextState, shoe);
     expect(thirdState).to.equal(Map({entries: List([shoe]), cart: List([])}));
+  });
+
+  it(" should remove second shoe from the cart", () => {
+    let shoe = fromJS({id: 3, name: "Shoe", price: 30})
+    let shoeTwo = fromJS({id: 4, name: "ShoeTwo", price: 30})
+    let initialState = Map({entries: List([shoe, shoeTwo]), cart: List([])});
+    let nextState = addToCart(initialState, shoe);
+    let thirdState = addToCart(nextState, shoeTwo);
+    let fourthState = removeFromCart(thirdState, shoeTwo);
+    expect(fourthState).to.equal(Map({entries: List([shoe, shoeTwo]), cart: List([shoe])}));
+  });
+})
+
+describe("settleCart", () => {
+  it("should move cart items to purchases", () => {
+    let shoe = fromJS({id: 3, name: "AddedShoe", price: 30})
+    let initialState = Map({entries: List([shoe]), cart: List([shoe])});
+    let nextState = settleCart(initialState);
+    expect(nextState).to.equal(Map({entries: List([shoe]), cart: List([]), settlements: List([List([shoe])])}));
   });
 });
