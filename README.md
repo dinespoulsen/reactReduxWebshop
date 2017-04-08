@@ -1,4 +1,6 @@
 reactReduxWebshop project [![Stories in Ready](https://badge.waffle.io/dinespoulsen/reactReduxWebshop.svg?label=ready&title=Ready)](http://waffle.io/dinespoulsen/reactReduxWebshop)
+
+[![Build Status](https://travis-ci.org/dinespoulsen/reactReduxWebshop.svg?branch=master)](https://travis-ci.org/dinespoulsen/reactReduxWebshop)
 =========================
 
 ## By:
