@@ -5,7 +5,7 @@ class CartPage extends React.Component {
   render() {
     return (
       <div>
-        <h1>CartList Placeholder</h1>
+        <h1>CartList Placeholder for cart item</h1>
       </div>
     );
   }
