@@ -18673,7 +18673,7 @@ var CartPage = function (_React$Component) {
         _react2.default.createElement(
           "h1",
           null,
-          "CartList Placeholder"
+          "CartList Placeholder for cart item"
         )
       );
     }
@@ -18849,7 +18849,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const shoes = [
   {id: 1, name: "shoeName", price: 10, imgSrc: "./shoe.png"},
   {id: 2, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
-  {id: 3, name: "secondShoe", price: 20, imgSrc: "./shoe.png"}
+  {id: 3, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
+  {id: 4, name: "secondShoe", price: 20, imgSrc: "./shoe.png"}
 ]
 
 const shoeList = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_immutable__["fromJS"])(shoes);
