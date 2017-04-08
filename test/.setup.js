@@ -1,4 +1,4 @@
-require('babel-register')();
+require('babel-core/register')();
 var chai = require("chai");
 var chaiImmutable = require('chai-immutable');
 chai.use(chaiImmutable);
