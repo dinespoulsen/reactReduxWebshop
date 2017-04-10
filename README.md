@@ -10,7 +10,7 @@ Tudor Tacal & Dines Poulsen
 
 The reactReduxWebshop project is a webshop based on the idea of making a simple webshop that integrates the technologies React and Redux. We wanted to increase our knowledge within these technologies and build something fun. The application has been developed with a focus on test driven development and we applied the SOLID principles to our best ability. The Redux store will be fed with data from a static file so data is not persisted. The focus has been on the user experience and how the user will interact with the webshop and the shopping cart.
 
-##User Stories
+## User Stories
 
 ```
 As a shoe fanatic
