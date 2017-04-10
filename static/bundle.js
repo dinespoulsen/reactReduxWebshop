@@ -18847,11 +18847,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 const shoes = [
-  {id: 1, name: "shoeName", price: 10, imgSrc: "./shoe.png"},
-  {id: 2, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
-  {id: 3, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
-  {id: 4, name: "secondShoe", price: 20, imgSrc: "./shoe.png"},
-  {id: 5, name: "secondShoe", price: 20, imgSrc: "./shoe.png"}
+  {id: 1, name: "Converse me up!", price: 10, imgSrc: "./shoe.png"},
+  {id: 2, name: "Adidas", price: 20, imgSrc: "./shoe2.png"},
+  {id: 3, name: "Greeny", price: 20, imgSrc: "./shoe3.png"},
+  {id: 4, name: "Grays?", price: 20, imgSrc: "./shoe4.png"}
 ]
 
 const shoeList = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_immutable__["fromJS"])(shoes);
@@ -19309,7 +19308,7 @@ exports.default = ShoeList;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.INITIAL_STATE = exports.removeFromCart = exports.addToCart = exports.setState = undefined;
+exports.INITIAL_STATE = exports.settleCart = exports.removeFromCart = exports.addToCart = exports.setState = undefined;
 
 var _immutable = __webpack_require__(44);
 
@@ -19326,8 +19325,16 @@ var addToCart = exports.addToCart = function addToCart(state, entry) {
 
 var removeFromCart = exports.removeFromCart = function removeFromCart(state, entry) {
   var cartList = state.get("cart") || (0, _immutable.List)([]);
-  var cartListNew = cartList.delete(0);
-  return state.set("cart", cartListNew);
+  var index = cartList.findIndex(function (shoe) {
+    return shoe.get("id") == entry.get("id");
+  });
+  return state.set("cart", cartList.delete(index));
+};
+
+var settleCart = exports.settleCart = function settleCart(state) {
+  var newSettlement = state.get("cart") || (0, _immutable.List)([]);
+  var settlements = state.get("settlements") || (0, _immutable.List)([]);
+  return state.set("cart", (0, _immutable.List)([])).set("settlements", settlements.push(newSettlement));
 };
 
 var INITIAL_STATE = exports.INITIAL_STATE = (0, _immutable.Map)();
@@ -19363,6 +19370,8 @@ function reducer() {
         return shoe.get("id") == action.shoeId;
       });
       return (0, _coreActions.removeFromCart)(state, shoeToRemove);
+    case "SETTLE_CART":
+      return (0, _coreActions.settleCart)(state);
   }
   return state;
 };
