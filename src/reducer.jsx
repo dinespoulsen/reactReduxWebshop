@@ -1,4 +1,4 @@
-import {setState, addToCart, removeFromCart, INITIAL_STATE} from "../src/coreActions.jsx";
+import {setState, addToCart, removeFromCart, settleCart, INITIAL_STATE} from "../src/coreActions.jsx";
 
 export default function reducer(state = INITIAL_STATE, action){
   switch (action.type) {
@@ -10,6 +10,8 @@ export default function reducer(state = INITIAL_STATE, action){
     case "REMOVE_FROM_CART":
       let shoeToRemove = state.get("entries").find(shoe => shoe.get("id") == action.shoeId);
       return removeFromCart(state, shoeToRemove);
+    case "SETTLE_CART":
+      return settleCart(state);
   }
   return state;
 };

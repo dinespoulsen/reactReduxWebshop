@@ -18,16 +18,25 @@ describe("reducer", () => {
   it("should be able to add a shoe item to the cart", () => {
     let shoe = fromJS({id: 3, name: "AddedShoe", price: 30})
     let initialState = Map({entries: List([shoe]), cart: List([])});
-    let setStateAction = {type: "ADD_TO_CART", shoeId: shoe.get("id")}
-    let nextState = reducer(initialState, setStateAction);
+    let addShoeAction = {type: "ADD_TO_CART", shoeId: shoe.get("id")}
+    let nextState = reducer(initialState, addShoeAction);
     expect(nextState).to.equal(Map({entries: List([shoe]), cart: List([shoe])}));
   });
 
   it("should be able to remove a shoe from the cart", () => {
     let shoe = fromJS({id: 4, name: "RemovedShoe", price: 30});
     let initialState = Map({entries: List([shoe]), cart: List([shoe])});
-    let setStateAction = {type: "REMOVE_FROM_CART", shoeId: shoe.get("id")};
-    let nextState = reducer(initialState, setStateAction);
+    let removeShoeAction = {type: "REMOVE_FROM_CART", shoeId: shoe.get("id")};
+    let nextState = reducer(initialState, removeShoeAction);
     expect(nextState).to.equal(Map({entries: List([shoe]), cart: List([])}));
   });
-}); 
+
+  it("should be able to setle a shopping cart", () => {
+    let firstShoe = fromJS({id: 4, name: "firstShoe", price: 30});
+    let secondShoe = fromJS({id: 5, name: "secondShoe", price: 30});
+    let initialState = Map({entries: List([firstShoe, secondShoe]), cart: List([firstShoe, secondShoe])});
+    let settleCartAction = {type: "SETTLE_CART"};
+    let nextState = reducer(initialState, settleCartAction);
+    expect(nextState).to.equal(Map({entries: List([firstShoe, secondShoe]), cart: List([]), settlements: List([List([firstShoe, secondShoe])])}));
+  });
+});
