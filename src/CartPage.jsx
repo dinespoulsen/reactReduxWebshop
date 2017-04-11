@@ -1,11 +1,13 @@
 import React from "react";
+import CartList from "../src/CartList.jsx"
+import {CartListContainer} from "./CartList.jsx";
 
 class CartPage extends React.Component {
 
   render() {
     return (
       <div>
-        <h1>CartList Placeholder for cart item</h1>
+       <CartListContainer ></CartListContainer >
       </div>
     );
   }
