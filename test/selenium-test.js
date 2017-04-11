@@ -9,10 +9,11 @@
 //   .forBrowser('firefox')
 //   .build();
 //
-// describe('On page load', function() {
+// describe("Selenium tests", function() {
 //     it('it should run a test just to see if webdriver works correctly', () => {
-//         driver.get('http:localhost:3000')
+//         driver.get('http:\\localhost:3000')
 //         let element = driver.findElement(By.id("7"))
 //         expect(element).to.exist;
 //     });
 // });
+//
