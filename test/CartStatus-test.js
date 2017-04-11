@@ -11,7 +11,7 @@ describe("<CartStatus />", () => {
   });
 
   it("should render with 1 in the status when cart holds one shoe", () => {
-    let shoe = fromJS({id: 1})
+    let shoe = fromJS({id: 1, amount: 1})
     const wrapper = shallow(<CartStatus cart={List([shoe])}/>);
     expect(wrapper.find("span").text()).to.equal("1");
   });

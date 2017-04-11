@@ -22,7 +22,7 @@ describe("addToCart", () => {
     let shoe = fromJS({id: 3, name: "AddedShoe", price: 30})
     let initialState = Map({entries: List([shoe]), cart: List([])});
     let nextState = addToCart(initialState, shoe);
-    expect(nextState).to.equal(Map({entries: List([shoe]), cart: List([shoe])}));
+    expect(nextState).to.equal(Map({entries: List([shoe]), cart: List([shoe.set("amount", 1)])}));
   });
 
   it(" should add two shoes to the cart", () => {
@@ -31,7 +31,15 @@ describe("addToCart", () => {
     let initialState = Map({entries: List([shoe, shoeTwo]), cart: List([])});
     let nextState = addToCart(initialState, shoe);
     let thirdState = addToCart(nextState, shoeTwo);
-    expect(thirdState).to.equal(Map({entries: List([shoe, shoeTwo]), cart: List([shoe, shoeTwo])}));
+    expect(thirdState).to.equal(Map({entries: List([shoe, shoeTwo]), cart: List([shoe.set("amount", 1), shoeTwo.set("amount", 1)])}));
+  });
+
+  it(" should add two shoes of the same to the cart", () => {
+    let shoe = fromJS({id: 3, name: "AddedShoe", price: 30})
+    let initialState = Map({entries: List([shoe]), cart: List([])});
+    let nextState = addToCart(initialState, shoe);
+    let thirdState = addToCart(nextState, shoe);
+    expect(thirdState).to.equal(Map({entries: List([shoe]), cart: List([shoe.set("amount", 2)])}));
   });
 });
 
@@ -44,6 +52,15 @@ describe("removeFromCart", () => {
     expect(thirdState).to.equal(Map({entries: List([shoe]), cart: List([])}));
   });
 
+  it(" should remove a shoe amount from the cart", () => {
+    let shoe = fromJS({id: 3, name: "AddedShoe", price: 30})
+    let initialState = Map({entries: List([shoe]), cart: List([])});
+    let nextState = addToCart(initialState, shoe);
+    let thirdState = addToCart(nextState, shoe);
+    let fourthState = removeFromCart(thirdState, shoe);
+    expect(fourthState).to.equal(Map({entries: List([shoe]), cart: List([shoe.set("amount", 1)])}));
+  });
+
   it(" should remove second shoe from the cart", () => {
     let shoe = fromJS({id: 3, name: "Shoe", price: 30})
     let shoeTwo = fromJS({id: 4, name: "ShoeTwo", price: 30})
@@ -51,7 +68,7 @@ describe("removeFromCart", () => {
     let nextState = addToCart(initialState, shoe);
     let thirdState = addToCart(nextState, shoeTwo);
     let fourthState = removeFromCart(thirdState, shoeTwo);
-    expect(fourthState).to.equal(Map({entries: List([shoe, shoeTwo]), cart: List([shoe])}));
+    expect(fourthState).to.equal(Map({entries: List([shoe, shoeTwo]), cart: List([shoe.set("amount", 1)])}));
   });
 })
 

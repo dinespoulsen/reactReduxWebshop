@@ -6,7 +6,12 @@ import {Link} from "react-router"
 class CartStatus extends React.Component {
 
   getCartStatus() {
-    return this.props.cart.size == 0 ? "" : this.props.cart.size;
+    if(this.props.cart.size === 0){
+      return "";
+    }
+    let cartSize = 0;
+    this.props.cart.forEach(item => cartSize = cartSize + item.get("amount"));
+    return cartSize;
   }
 
   getStyle() {

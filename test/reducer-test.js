@@ -20,11 +20,11 @@ describe("reducer", () => {
     let initialState = Map({entries: List([shoe]), cart: List([])});
     let addShoeAction = {type: "ADD_TO_CART", shoeId: shoe.get("id")}
     let nextState = reducer(initialState, addShoeAction);
-    expect(nextState).to.equal(Map({entries: List([shoe]), cart: List([shoe])}));
+    expect(nextState).to.equal(Map({entries: List([shoe]), cart: List([shoe.set("amount", 1)])}));
   });
 
   it("should be able to remove a shoe from the cart", () => {
-    let shoe = fromJS({id: 4, name: "RemovedShoe", price: 30});
+    let shoe = fromJS({id: 4, name: "RemovedShoe", price: 30, amount: 1});
     let initialState = Map({entries: List([shoe]), cart: List([shoe])});
     let removeShoeAction = {type: "REMOVE_FROM_CART", shoeId: shoe.get("id")};
     let nextState = reducer(initialState, removeShoeAction);

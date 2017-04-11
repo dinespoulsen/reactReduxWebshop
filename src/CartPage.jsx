@@ -7,7 +7,7 @@ class CartPage extends React.Component {
   render() {
     return (
       <div>
-       <CartListContainer ></CartListContainer >
+       <CartListContainer></CartListContainer>
       </div>
     );
   }
