@@ -12,12 +12,12 @@ class CartList extends React.Component {
             cartItems = this.props.cartItems.map((cartItem) => {
              let cartItemProps = {id: cartItem.get("id"), name: cartItem.get("name"), price: cartItem.get("price"), imgSrc: cartItem.get("imgSrc"), amount: cartItem.get("amount")}
              return (
-                <li key={cartItem.get("id")}><CartItem {...cartItemProps} removeFromCartAction={this.props.removeFromCartAction}/></li>
+                <li key={cartItem.get("id")} className="cartItem"><CartItem {...cartItemProps} removeFromCartAction={this.props.removeFromCartAction}/></li>
         ) ;
       });
     }
         return (
-            <ul>
+            <ul className="cartList">
                 {cartItems}
             </ul>
         );

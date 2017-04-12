@@ -33,3 +33,24 @@ header {
   border-radius: 10px;
   padding: 2px 5px 2px 5px;
 }
+.cartList {
+  width: 60%;
+}
+
+.cartItem {
+  border-bottom: solid 1px #F5F5F5;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.cartItemImage {
+  margin-right: 50px;
+}
+
+.cartItemDescription {
+  margin-right: 40px;
+}
+
+.removeFromCart {
+  padding: 30px;
+}

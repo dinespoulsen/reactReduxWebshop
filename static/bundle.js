@@ -13814,14 +13814,14 @@ var CartList = function (_React$Component) {
                     var cartItemProps = { id: cartItem.get("id"), name: cartItem.get("name"), price: cartItem.get("price"), imgSrc: cartItem.get("imgSrc"), amount: cartItem.get("amount") };
                     return _react2.default.createElement(
                         'li',
-                        { key: cartItem.get("id") },
+                        { key: cartItem.get("id"), className: 'cartItem' },
                         _react2.default.createElement(_CartItem2.default, _extends({}, cartItemProps, { removeFromCartAction: _this2.props.removeFromCartAction }))
                     );
                 });
             }
             return _react2.default.createElement(
                 'ul',
-                null,
+                { className: 'cartList' },
                 cartItems
             );
         }
@@ -19055,31 +19055,44 @@ var CartItem = function (_React$Component) {
 
       return _react2.default.createElement(
         "div",
-        { className: "cartItem" },
+        null,
         _react2.default.createElement(
-          "p",
-          null,
-          this.props.name
-        ),
-        _react2.default.createElement("img", { src: this.props.imgSrc, width: "200" }),
-        _react2.default.createElement(
-          "p",
-          null,
-          "Price: ",
-          String(this.props.price)
+          "div",
+          { className: "cartItemImage", style: { display: "inline-block" } },
+          _react2.default.createElement("img", { src: this.props.imgSrc, width: "100" })
         ),
         _react2.default.createElement(
-          "p",
-          null,
-          "Amount ",
-          String(this.props.amount)
+          "div",
+          { className: "cartItemDescription", style: { display: "inline-block" } },
+          _react2.default.createElement(
+            "p",
+            null,
+            "Name: ",
+            this.props.name
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "Price: ",
+            String(this.props.price)
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            "Amount: ",
+            String(this.props.amount)
+          )
         ),
         _react2.default.createElement(
-          "button",
-          { id: this.props.id, onClick: function onClick() {
-              return _this2.props.removeFromCartAction(_this2.props.id);
-            } },
-          "Remove from cart"
+          "div",
+          { className: "removeFromCart", style: { display: "inline-block" } },
+          _react2.default.createElement(
+            "button",
+            { id: this.props.id, onClick: function onClick() {
+                return _this2.props.removeFromCartAction(_this2.props.id);
+              } },
+            "Remove from cart"
+          )
         )
       );
     }
@@ -19500,11 +19513,9 @@ var addToCart = exports.addToCart = function addToCart(state, entry) {
       return item.get("id") == entry.get("id");
     });
     var newAmount = cartItem.get("amount") + 1;
-    var _cartListNew = cartList.delete(index);
-    return state.set("cart", _cartListNew.push(cartItem.set("amount", newAmount)));
+    return state.set("cart", cartList.set(index, cartItem.set("amount", newAmount)));
   }
-  var cartListNew = cartList.push(entry.set("amount", 1));
-  return state.set("cart", cartListNew);
+  return state.set("cart", cartList.push(entry.set("amount", 1)));
 };
 
 var removeFromCart = exports.removeFromCart = function removeFromCart(state, entry) {
@@ -19517,11 +19528,11 @@ var removeFromCart = exports.removeFromCart = function removeFromCart(state, ent
       return item.get("id") == entry.get("id");
     });
     var newAmount = cartItem.get("amount") - 1;
-    var cartListNew = cartList.delete(index);
     if (newAmount === 0) {
+      var cartListNew = cartList.delete(index);
       return state.set("cart", cartListNew);
     }
-    return state.set("cart", cartListNew.push(cartItem.set("amount", newAmount)));
+    return state.set("cart", cartList.set(index, cartItem.set("amount", newAmount)));
   }
   return state;
 };
