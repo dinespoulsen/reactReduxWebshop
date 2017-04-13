@@ -6,7 +6,7 @@ Tudor Tacal & Dines Poulsen
 
 ## Introduction
 
-The reactReduxWebshop project is a webshop based on the idea of making a simple webshop that integrates the technologies React and Redux. We wanted to increase our knowledge within these technologies and build something fun. The application has been developed with a focus on test driven development and we applied the SOLID principles to our best ability. The Redux store will be fed with data from a static file so data is not persisted. The focus has been on the user experience and how the user will interact with the webshop and the shopping cart.
+The reactReduxWebshop project is a webshop based on the idea of making a simple webshop that integrates the technologies React and Redux. We wanted to increase our knowledge within these technologies and build something fun. The application has been developed with a focus on test driven development and we applied the SOLID principles to our best ability. The Redux store will be fed with data from a static file so data will only exist in memory. The focus has been on the user experience and how the user will interact with the webshop and the shopping cart.
 
 ## User Stories
 
@@ -50,7 +50,9 @@ Clone the git repository and run npm install.
 * Webpack & Babel
 * Immutable
 * Mocha, Chai & Enzyme
+* Selenium
 
 ## Tests
 
-* Run npm test to run all tests.
+* Run npm test to run all tests unit tests.
+* npm run selenium to run all selenium tests.
