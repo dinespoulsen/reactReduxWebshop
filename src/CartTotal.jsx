@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from 'react-redux';
 import * as actionCreators from './action_creators';
+import {Link} from "react-router";
 
 class CartTotal extends React.Component {
 
@@ -15,7 +16,7 @@ class CartTotal extends React.Component {
       <div className="cartTotal">
         <h4>Cart Summary:</h4>
         <p>Total: {this.getTotal()}</p>
-        <button id="settleCartButton">Settle Cart</button>
+        <Link to="/"><button id="settleCartButton" onClick={() => this.props.settleCartAction()}>Settle Cart</button></Link>
       </div>
     );
   }
