@@ -12,11 +12,21 @@ class CartTotal extends React.Component {
   }
 
   render() {
+    let cartTotal;
+    let isActive = this.props.cart.size >0;
+    if(isActive) {
+      cartTotal = <div className="cartTotal">
+              <h4>Cart Summary:</h4>
+              <p>Total: {this.getTotal()}</p>
+              <Link to="/"><button id="settleCartButton" onClick={() => this.props.settleCartAction()}>Settle Cart</button></Link>
+            </div>
+    }
+    else {
+      cartTotal = <div></div>
+    }
     return (
-      <div className="cartTotal">
-        <h4>Cart Summary:</h4>
-        <p>Total: {this.getTotal()}</p>
-        <Link to="/"><button id="settleCartButton" onClick={() => this.props.settleCartAction()}>Settle Cart</button></Link>
+      <div>
+        {cartTotal}
       </div>
     );
   }

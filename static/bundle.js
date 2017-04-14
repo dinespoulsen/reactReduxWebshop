@@ -19301,31 +19301,42 @@ var CartTotal = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var cartTotal = void 0;
+      var isActive = this.props.cart.size > 0;
+      if (isActive) {
+        cartTotal = _react2.default.createElement(
+          'div',
+          { className: 'cartTotal' },
+          _react2.default.createElement(
+            'h4',
+            null,
+            'Cart Summary:'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Total: ',
+            this.getTotal()
+          ),
+          _react2.default.createElement(
+            _reactRouter.Link,
+            { to: '/' },
+            _react2.default.createElement(
+              'button',
+              { id: 'settleCartButton', onClick: function onClick() {
+                  return _this2.props.settleCartAction();
+                } },
+              'Settle Cart'
+            )
+          )
+        );
+      } else {
+        cartTotal = _react2.default.createElement('div', null);
+      }
       return _react2.default.createElement(
         'div',
-        { className: 'cartTotal' },
-        _react2.default.createElement(
-          'h4',
-          null,
-          'Cart Summary:'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Total: ',
-          this.getTotal()
-        ),
-        _react2.default.createElement(
-          _reactRouter.Link,
-          { to: '/' },
-          _react2.default.createElement(
-            'button',
-            { id: 'settleCartButton', onClick: function onClick() {
-                return _this2.props.settleCartAction();
-              } },
-            'Settle Cart'
-          )
-        )
+        null,
+        cartTotal
       );
     }
   }]);
