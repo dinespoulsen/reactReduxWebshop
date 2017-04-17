@@ -30,3 +30,24 @@ test.describe('When adding to cart', function() {
     driver.quit();
   });
 });
+
+test.describe('When adding and removing from the cart', function() {
+  this.timeout(mochaTimeOut);
+  test.it('should increase the cart counter', function () {
+    var driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+    driver.get('http://localhost:3000/');
+    var element = driver.findElement(By.id("1"));
+    element.click();
+    driver.findElement(By.id("cartCounter")).getText().then(function(text) {
+      expect(text).to.equal("1");
+    });
+    var cart = driver.findElement(By.id("cartImage"));
+    cart.click();
+    var element = driver.findElement(By.id("1"));
+    element.click();
+    driver.findElement(By.id("cartCounter")).getText().then(function(text) {
+      expect(text).to.equal("");
+    });
+    driver.quit();
+  });
+});

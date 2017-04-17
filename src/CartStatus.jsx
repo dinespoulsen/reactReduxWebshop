@@ -21,7 +21,7 @@ class CartStatus extends React.Component {
   render() {
     return (
       <div>
-        <Link to='/cart'>
+        <Link id="cartImage" to='/cart'>
           <img src="./cart.png" width="30"></img>
         </Link>
         <span id="cartCounter" style={this.getStyle()}>{this.getCartStatus()}</span>

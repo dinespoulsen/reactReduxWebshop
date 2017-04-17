@@ -19215,7 +19215,7 @@ var CartStatus = function (_React$Component) {
         null,
         _react2.default.createElement(
           _reactRouter.Link,
-          { to: '/cart' },
+          { id: 'cartImage', to: '/cart' },
           _react2.default.createElement('img', { src: './cart.png', width: '30' })
         ),
         _react2.default.createElement(
